@@ -24,6 +24,7 @@ namespace bc_road_events_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +34,9 @@ namespace bc_road_events_api
             {
                 app.UseDeveloperExceptionPage();
             }
+            // Shows UseCors with CorsPolicyBuilder.
+            app.UseCors(builder =>
+               builder.WithOrigins("http://localhost:4200"));
 
             app.UseMvc();
         }
